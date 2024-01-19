@@ -1,12 +1,14 @@
 const DOMSelectors = {
   container: document.querySelector(".container"),
-  buttons: document.querySelector(".buttons"),
+  buttons: document.querySelectorAll(".buttons"),
 };
+
 /* const array = [];
 for (let i = 0; i <= 255; i++) {
   array.push(i);
 }
- */
+
+console.log(array); */
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
@@ -23,10 +25,12 @@ DOMSelectors.container.insertAdjacentHTML(
 );
 
 function rgb() {
-  let a = Math.round(Math.random() * 255);
-  let b = Math.round(Math.random(1) * 255);
-  let c = Math.round(Math.random(2) * 255);
-  document.getElementsByClassName("buttons").style.backgroundColor = (a, b, c);
+  DOMSelectors.buttons.forEach((button) => {
+    let a = Math.round(Math.random() * 255);
+    let b = Math.round(Math.random(1) * 255);
+    let c = Math.round(Math.random(2) * 255);
+    button.style.backgroundColor = (a, b, c);
+  });
 }
 console.log(rgb());
 DOMSelectors.container.addEventListener("click", function (e) {
