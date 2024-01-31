@@ -5,3 +5,8 @@ background-color: aliceblue;
 .container{
     align-items: center;
 }
+
+.guess{
+    width: 500px;
+    height: 500px;
+}
