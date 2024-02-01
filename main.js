@@ -1,7 +1,10 @@
 const DOMSelectors = {
   container: document.querySelector(".container"),
   buttons: document.querySelectorAll(".buttons"),
-  button: document.querySelector("#button1"),
+  button1: document.querySelector("#button1"),
+  button2: document.querySelector("#button1"),
+  button3: document.querySelector("#button1"),
+  button4: document.querySelector("#button1"),
 };
 
 function rgb() {
@@ -11,11 +14,10 @@ function rgb() {
   return { a, b, c };
 }
 
-console.log(DOMSelectors.button);
+
 function changeBackground() {
-  let x = rgb();
-  DOMSelectors.button.style.backgroundColor = (x.a, x.b, x.c);
-  document.querySelector(".guess").style.backgroundColor = (x.a, x.b, x.c);
+  let x = rgb  ();
+  DOMSelectors.button.style.backgroundColor = `rgb(${x.a}, ${x.b}, ${x.c})`;
   DOMSelectors.container.insertAdjacentHTML(
     "beforeend",
     `<div class=card>
