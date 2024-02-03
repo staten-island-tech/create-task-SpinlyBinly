@@ -2,9 +2,9 @@ const DOMSelectors = {
   container: document.querySelector(".container"),
   buttons: document.querySelectorAll(".buttons"),
   button1: document.querySelector("#button1"),
-  button2: document.querySelector("#button1"),
-  button3: document.querySelector("#button1"),
-  button4: document.querySelector("#button1"),
+  button2: document.querySelector("#button2"),
+  button3: document.querySelector("#button3"),
+  button4: document.querySelector("#button4"),
 };
 
 function rgb() {
@@ -14,25 +14,33 @@ function rgb() {
   return { a, b, c };
 }
 
+function value(){
+  const array = [1, 2, 3, 4]
+let randomValue = array[Math.floor(Math.random() * array.length)];
+return {randomValue};
+}
+let v = value();
 
-function changeBackground() {
-  let x = rgb  ();
-  DOMSelectors.button.style.backgroundColor = `rgb(${x.a}, ${x.b}, ${x.c})`;
-  DOMSelectors.container.insertAdjacentHTML(
+function changeBackground(){
+ for (let i = 1; i < 5; i++) {
+  let w = rgb();
+  DOMSelectors[`button${i}`].style.backgroundColor = `rgb(${w.a}, ${w.b}, ${w.c})`;
+  if (i === v){
+   DOMSelectors.container.insertAdjacentHTML(
     "beforeend",
     `<div class=card>
-    <h1>${x.a}</h1>
-    <h1>${x.b}</h1>
-    <h1>${x.c}</h1>
+    <h1>${i.a}</h1>
+    <h1>${i.b}</h1>
+    <h1>${i.c}</h1>
     </div>`
   );
+  }
 }
-changeBackground();
-//store 1-4 in array and swap order
-const array = [];
-for (let i = 1; i <= 4; i++) {
-  array.push(i);
+
+console.log(v)
 }
+changeBackground()
+
 
 /* function switchButtonOrder() {}
 console.log(array);

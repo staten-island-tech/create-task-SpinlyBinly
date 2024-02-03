@@ -1,8 +1,13 @@
+:root{
+    background-color: rgb(255, 255, 255);
+}
 .body{
-background-color: aliceblue;
+background-color: rgb(255, 255, 255);
 }
 
 .container{
+    display: flex;
+    background-color: rgb(255, 255, 255);
     align-items: center;
 }
 
