@@ -25,27 +25,25 @@ function changeBackground(){
  for (let i = 1; i < 5; i++) {
   let w = rgb();
   DOMSelectors[`button${i}`].style.backgroundColor = `rgb(${w.a}, ${w.b}, ${w.c})`;
-  if (i === v){
+  if (i === v.randomValue){
    DOMSelectors.container.insertAdjacentHTML(
-    "beforeend",
+    "beforebegin",
     `<div class=card>
-    <h1>${i.a}</h1>
-    <h1>${i.b}</h1>
-    <h1>${i.c}</h1>
+    <h1>${w.a},  &nbsp;</h1>
+    <h1>${w.b},  &nbsp;</h1>
+    <h1>${w.c}</h1>
     </div>`
   );
-  }
+  }  
 }
 
 console.log(v)
 }
 changeBackground()
 
-
-/* function switchButtonOrder() {}
-console.log(array);
-DOMSelectors.button.addEventListener("click", function (e) {
-  e.preventDefault();
+//DOMSelectors.incorrectButtons.addEventListener("click", function (event) {<h1>Sorry, try again.</h1>})
+//DOMSelectors.correctButton.addEventListener("click", function (event) {<h1>Well done!</h1>})
+/* DOMSelectors.button.addEventListener("click", function (event) {
+  event.preventDefault();
   console.log(changeBackground());
-});
- */
+}); */
