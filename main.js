@@ -5,6 +5,7 @@ const DOMSelectors = {
   button2: document.querySelector("#button2"),
   button3: document.querySelector("#button3"),
   button4: document.querySelector("#button4"),
+  responsesContainer: document.querySelector(".container"),
 };
 
 function rgb() {
@@ -15,35 +16,52 @@ function rgb() {
 }
 
 function value(){
-  const array = [1, 2, 3, 4]
-let randomValue = array[Math.floor(Math.random() * array.length)];
-return {randomValue};
+  const array = [1, 2, 3, 4];
+  let randomValue = array[Math.floor(Math.random() * array.length)];
+  return { randomValue };
 }
+
 let v = value();
 
-function changeBackground(){
- for (let i = 1; i < 5; i++) {
-  let w = rgb();
-  DOMSelectors[`button${i}`].style.backgroundColor = `rgb(${w.a}, ${w.b}, ${w.c})`;
-  if (i === v.randomValue){
-   DOMSelectors.container.insertAdjacentHTML(
-    "beforebegin",
-    `<div class=card>
-    <h1>${w.a},  &nbsp;</h1>
-    <h1>${w.b},  &nbsp;</h1>
-    <h1>${w.c}</h1>
-    </div>`
-  );
-  }  
+function changeBackground() {
+  for (let i = 1; i < 5; i++) {
+    let w = rgb();
+    DOMSelectors[`button${i}`].style.backgroundColor = `rgb(${w.a}, ${w.b}, ${w.c})`;
+    if (i === v.randomValue) {
+      DOMSelectors.container.insertAdjacentHTML(
+        "beforebegin",
+        `<div class="card">
+        <h1>${w.a},&nbsp;</h1>
+        <h1>${w.b},&nbsp;</h1>
+        <h1>${w.c}</h1>
+        </div>`
+      );
+
+    }
+  }
 }
 
-console.log(v)
-}
-changeBackground()
+changeBackground();
 
-//DOMSelectors.incorrectButtons.addEventListener("click", function (event) {<h1>Sorry, try again.</h1>})
-//DOMSelectors.correctButton.addEventListener("click", function (event) {<h1>Well done!</h1>})
-/* DOMSelectors.button.addEventListener("click", function (event) {
-  event.preventDefault();
-  console.log(changeBackground());
-}); */
+function checkResult(event) {
+  const correctButton = event.target.id;
+
+  if (correctButton === `button${v.randomValue}`) {
+    DOMSelectors.responsesContainer.insertAdjacentHTML(
+      "afterend",
+      `<div class="responsesButtons"><h1>Correct!</h1></div>
+        <div class="reloadButton" <button type="button" onclick="location.reload()">Click here to play again!</button></div>`
+    );
+  } else {
+    DOMSelectors.responsesContainer.insertAdjacentHTML(
+      "afterend",
+      `<div class="responsesButtons">
+        <h1>Try again.</h1>
+      </div>`
+    );
+  }
+}
+
+DOMSelectors.buttons.forEach(button => { 
+  button.addEventListener("click", checkResult);
+});
